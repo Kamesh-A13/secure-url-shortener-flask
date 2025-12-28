@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Secure URL Shortener</title>
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+:root {
+  --primary:#1a56db;
+  --primary-dark:#1e429f;
+  --success:#059669;
+  --dark:#111827;
+  --gray:#6b7280;
+  --light:#f8fafc;
+  --border:12px;
+  --shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--light);
+  color:var(--dark);
+}
+
+/* HEADER */
+header{
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:#fff;
+  padding:30px 15px;
+  text-align:center;
+}
+header h1{font-size:2rem;font-weight:700}
+header p{opacity:.9;margin-top:8px}
+
+/* LAYOUT */
+.layout{
+  max-width:1400px;
+  margin:auto;
+  padding:40px 15px;
+  display:flex;
+  gap:30px;
+}
+
+/* ADS */
+.ad-column{
+  width:18%;
+  min-width:200px;
+}
+.ad-label{
+  background:#e5e7eb;
+  padding:4px 12px;
+  border-radius:20px;
+  font-size:.8rem;
+  margin-bottom:12px;
+  display:inline-block;
+}
+.ad-column a{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+  background:#fff;
+  border-radius:var(--border);
+  overflow:hidden;
+  margin-bottom:20px;
+  box-shadow:var(--shadow);
+  transition:.3s;
+}
+.ad-column a:hover{transform:translateY(-5px)}
+.ad-column img{width:100%;display:block}
+.ad-column h3{
+  padding:15px;
+  font-size:.9rem;
+  color:var(--gray);
+}
+
+/* CENTER CARD */
+.content{
+  flex:1;
+  background:#fff;
+  padding:40px;
+  border-radius:var(--border);
+  box-shadow:var(--shadow);
+  text-align:center;
+}
+.content h2{font-size:1.8rem;margin-bottom:10px}
+.content p{color:var(--gray);margin-bottom:30px}
+
+input{
+  width:100%;
+  padding:15px;
+  border-radius:10px;
+  border:1px solid #e5e7eb;
+  font-size:1rem;
+  margin-bottom:20px;
+}
+button{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:#fff;
+  font-size:1.05rem;
+  font-weight:600;
+  cursor:pointer;
+}
+button:hover{opacity:.9}
+
+/* CONTACT */
+.contact{
+  max-width:900px;
+  margin:60px auto;
+  background:#fff;
+  padding:40px;
+  border-radius:var(--border);
+  box-shadow:var(--shadow);
+  text-align:center;
+}
+.contact h2{color:var(--primary);margin-bottom:10px}
+.contact p{color:var(--gray);margin-bottom:30px}
+
+.contact-box{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.contact-item{
+  flex:1;
+  min-width:250px;
+  background:#f9fafb;
+  padding:25px;
+  border-radius:12px;
+}
+.contact-item i{
+  font-size:24px;
+  color:#fff;
+  background:var(--primary);
+  padding:15px;
+  border-radius:50%;
+  margin-bottom:10px;
+}
+
+/* FOOTER */
+footer{
+  background:var(--dark);
+  color:#9ca3af;
+  text-align:center;
+  padding:30px 15px;
+  margin-top:40px;
+}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .layout{flex-direction:column}
+  .ad-column{width:100%;display:flex;gap:20px;justify-content:center}
+  .ad-column a{max-width:260px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Secure URL Shortener</h1>
+  <p>Hash + Base64 • Fast • Secure • Deterministic</p>
+</header>
+
+<div class="layout">
+
+  <!-- LEFT ADS -->
+  <div class="ad-column">
+    <div class="ad-label">Sponsored</div>
+    <a href="https://mvglobe.in/" target="_blank">
+      <img src="{{ url_for('static', filename='mv glob.png') }}">
+      <h3>MVGlobe – Web & software solutions since 2015</h3>
+    </a>
+    <a href="https://queenconstructions.in/" target="_blank">
+  <div style="
+    background:#000;
+    padding:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  ">
+    <img src="{{ url_for('static', filename='queen construction.png') }}"
+         style="max-width:100%; height:auto;">
+  </div>
+  <h3>Queen Constructions – Trusted builders since 1994</h3>
+  </a>
+
+  </div>
+
+  <!-- CENTER -->
+  <div class="content">
+    <h2>Shorten Your Long URL</h2>
+    <p>Create short, secure links instantly</p>
+
+    <form method="POST">
+      <input type="url" name="url" placeholder="Enter long URL" required>
+      <button type="submit">
+        <i class="fas fa-link"></i> Generate Short URL
+      </button>
+    </form>
+  </div>
+
+  <!-- RIGHT ADS -->
+  <div class="ad-column">
+    <div class="ad-label">Sponsored</div>
+    <a href="https://newqueentailor.netlify.app/" target="_blank">
+      <img src="{{ url_for('static', filename='new queen tailor.png') }}">
+      <h3>New Queen Tailor – Perfect fit since 1999</h3>
+    </a>
+    <a href="https://www.ppconstructions.in/" target="_blank">
+      <img src="{{ url_for('static', filename='ppconstruction.jpg') }}">
+      <h3>PP Constructions – Building dreams</h3>
+    </a>
+  </div>
+
+</div>
+
+<!-- CONTACT -->
+<div class="contact">
+  <h2>Contact Me</h2>
+  <p>Get in touch for development projects</p>
+
+  <div class="contact-box">
+    <div class="contact-item">
+      <i class="fas fa-phone"></i>
+      <h3>Phone</h3>
+      <p>+91 98947 38057</p>
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-envelope"></i>
+      <h3>Email</h3>
+      <p>kameshanbu13@gmail.com</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2025 <strong>MVGlobe</strong> • Developed by <strong>Kamesh A</strong>
+</footer>
+
+</body>
+</html>
