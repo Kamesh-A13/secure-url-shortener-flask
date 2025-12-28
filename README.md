@@ -102,17 +102,20 @@ The same long URL always generates the same short URL.
 
 ## ▶️ How to Run Locally
 
-### 1️⃣ Install dependencies
-```bash
+ 1️⃣ Install dependencies
+
 pip install -r requirements.txt
+
 2️⃣ Create the database
-bash
+
 Copy code
 mysql -u root -p < database.sql
+
 3️⃣ Run the application
-bash
+
 Copy code
 python app.py
+
 4️⃣ Open in browser
 cpp
 Copy code
